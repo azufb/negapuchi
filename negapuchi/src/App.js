@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Form from './component/form';
+import Result from './component/result';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>ネガプチッ！</h1>
+        <Form />
+        <Result />
+      </div>
+    )
+  }
 }
 
 export default App;
+
+/* 処理の流れ
+①入力フォームに、文章を打つ。
+②変換ボタンを押す。
+③入力フォームに入力された文章の中から、読点(。)などを見つけ出し、
+絵文字やエクスクラメーションマーク(!)に変換する。
+③表示エリアに、変換された文章を表示する。
+*/
+
+/* 必要なパーツ
+・タイトル
+・入力フォームと変換ボタン→コンポーネント化
+・表示エリア→コンポーネント化
+*/
