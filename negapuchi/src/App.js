@@ -1,6 +1,5 @@
 import React from 'react';
 import Form from './component/form';
-import Result from './component/result';
 
 class App extends React.Component {
   render() {
@@ -8,7 +7,6 @@ class App extends React.Component {
       <div>
         <h1>ネガプチッ！</h1>
         <Form />
-        <Result />
       </div>
     )
   }

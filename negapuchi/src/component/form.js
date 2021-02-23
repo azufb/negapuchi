@@ -5,8 +5,10 @@ class Form extends React.Component {
         // 初期化
         super(props);
         this.state = {
-            content: ''
+            content: '',
+            lists: []
         }
+        this.handleAdd = this.handleAdd.bind(this);
     }
 
     handleChange(event) {
@@ -15,15 +17,38 @@ class Form extends React.Component {
             content: inputContent
         })
     }
+
+    handleAdd() {
+        // 入力された値を、正規表現を使って変換。
+        /* 
+        「又は」を表すのは、「|」。
+        ピリオドは、そのまま入れると、改行文字以外のどの 1 文字にもマッチする、「特殊文字」だと認識されてしまうため。エスケープする必要がある。
+        */
+        let reg = new RegExp(/。|\./, 'gim');
+        let regResult = this.state.content.replace(reg, '！');
+
+        let reg2 = this.state.content.match(/ろよ/)
+
+        if (reg2!== null) {
+            regResult = this.state.content.replace(reg2, 'て頂ければ嬉しいです！')
+        }
+
+        this.setState({
+            lists: [...this.state.lists, regResult],
+            content: ''
+        });
+    }
+
     render() {
         return (
             <div>
-                <p>Formはここです。</p>
-                <form>
-                    <input type='text' onChange={(event) => {this.handleChange(event)}} 
-                    value={ this.state.content } />
-                    <input type='submit' value='変換' />
-                </form>
+                <textarea type='text' onChange={(event) => {this.handleChange(event)}} 
+                value={ this.state.content } />
+                <input type='button' value='変換' onClick={() => {this.handleAdd()}} />
+
+                <div>
+                {this.state.lists.map((list, i) => <p key={i}>{list}</p>)}
+                </div>
             </div>
         )
     }
