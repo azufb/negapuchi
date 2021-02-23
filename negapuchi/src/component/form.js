@@ -27,10 +27,17 @@ class Form extends React.Component {
         let reg = new RegExp(/。|\./, 'gim');
         let regResult = this.state.content.replace(reg, '！');
 
+        let onegai = [
+            'て頂ければ嬉しいです！',
+            'て頂ければ助かります！',
+            'て欲しいです！',
+            'てもらえたらありがたい！',
+            'て欲しいです！'
+        ]
         let reg2 = this.state.content.match(/ろよ/)
 
         if (reg2!== null) {
-            regResult = this.state.content.replace(reg2, 'て頂ければ嬉しいです！')
+            regResult = this.state.content.replace(reg2, onegai[Math.floor(Math.random()*onegai.length)])
         }
 
         this.setState({
