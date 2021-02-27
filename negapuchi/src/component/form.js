@@ -5,7 +5,7 @@ class Form extends React.Component {
         // 初期化
         super(props);
         this.state = {
-            content: ``,
+            content: '',
             lists: []
         }
         this.handleAdd = this.handleAdd.bind(this);
@@ -25,8 +25,7 @@ class Form extends React.Component {
         ピリオドは、そのまま入れると、改行文字以外のどの 1 文字にもマッチする、「特殊文字」だと認識されてしまうため。エスケープする必要がある。
         */
 
-        let regResult = this.state.content;
-
+        let regExpCont = this.state.content;
 
         let meireiList = [
             'ろよ',
@@ -35,10 +34,11 @@ class Form extends React.Component {
             'せんかい',
             'やれよ',
             'やれや',
-            'やらんかい'
+            'やらんかい',
+            'しいや'
         ]
 
-        let onegai = [
+        let onegaiList = [
             'て頂ければ嬉しいです！',
             'て頂ければ助かります！',
             'て欲しいです！',
@@ -56,29 +56,29 @@ class Form extends React.Component {
             '殴る',
         ]
 
-        for (const element of ngList) {
-            let regs1 = new RegExp(`${element}`, 'gim');
-            let reg2 = regResult.match(regs1);
+        for (const ngWord of ngList) {
+            let regExp1 = new RegExp(`${ngWord}`, 'gim');
+            let regExpNg = regExpCont.match(regExp1);
 
-            if (reg2 !== null) {
-                regResult = regResult.replace(reg2, '×××');
+            if (regExpNg !== null) {
+                regExpCont = regExpCont.replace(regExpNg, '×××');
             }
         }
 
         for (let meirei of meireiList) {
-            let regs2 = new RegExp(`${meirei}`, 'gim');
-            let reg3 = regResult.match(regs2);
+            let regExp2 = new RegExp(`${meirei}`, 'gim');
+            let regExpMeirei = regExpCont.match(regExp2);
 
-            if (reg3 !== null) {
-                regResult = regResult.replace(reg3, onegai[Math.floor(Math.random()*onegai.length)]);
+            if (regExpMeirei !== null) {
+                regExpCont = regExpCont.replace(regExpMeirei, `${onegaiList[Math.floor(Math.random()*onegaiList.length)]}\nすみませんがお願い致します。`);
             }
         }
 
-        let kuten = new RegExp(/。|\./, 'gim');
-        let result = regResult.replace(kuten, '!');
+        let regExpKuten = new RegExp(/。|\./, 'gim');
+        let result = regExpCont.replace(regExpKuten, '!');
 
         this.setState({
-            lists: [...this.state.lists, result],
+            lists: [...this.state.lists, result],// スプレッド構文
             content: ''
         });
         
@@ -88,7 +88,7 @@ class Form extends React.Component {
         return (
             <div>
                 <textarea type='text' onChange={(event) => {this.handleChange(event)}} 
-                value={ this.state.content } />
+                value={this.state.content} />
                 <input type='button' value='変換' onClick={() => {this.handleAdd()}} />
 
                 <div>
