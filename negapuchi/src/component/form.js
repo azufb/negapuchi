@@ -25,9 +25,11 @@ class Form extends React.Component {
         ピリオドは、そのまま入れると、改行文字以外のどの 1 文字にもマッチする、「特殊文字」だと認識されてしまうため。エスケープする必要がある。
         */
 
+        let regResult;
 
-        let reg = new RegExp(/。|\./, 'gim');
-        let regResult = this.state.content.replace(reg, '！');
+        regResult = this.state.content;
+        /*let reg = new RegExp(/。|\./, 'gim');
+        let regResult = this.state.content.replace(reg, '！');*/
 
         let meireiList = [
             'ろよ',
@@ -48,10 +50,11 @@ class Form extends React.Component {
         ]
 
         for (let meirei of meireiList) {
-            let reg2 = this.state.content.match(meirei);
+            let regs = new RegExp(`${meirei}`, 'gim');
+            let reg2 = this.state.content.match(regs);
 
             if (reg2 !== null) {
-                regResult = this.state.content.replace(reg2, onegai[Math.floor(Math.random()*onegai.length)])
+                regResult = this.state.content.replace(reg2, onegai[Math.floor(Math.random()*onegai.length)]);
             }
         }
 
@@ -66,15 +69,19 @@ class Form extends React.Component {
         ]
 
         for (const element of ngList) {
-            let reg3 = this.state.content.match(element);
+            let regs2 = new RegExp(`${element}`, 'gim');
+            let reg3 = this.state.content.match(regs2);
 
             if (reg3 !== null) {
                 regResult = this.state.content.replace(reg3, '×××');
             }
         }
 
+        let reg = new RegExp(/。|\./, 'gim');
+        let result = regResult.replace(reg, '!');
+
         this.setState({
-            lists: [...this.state.lists, regResult],
+            lists: [...this.state.lists, result],
             content: ''
         });
         
