@@ -5,7 +5,7 @@ class Form extends React.Component {
         // 初期化
         super(props);
         this.state = {
-            content: '',
+            content: ``,
             lists: []
         }
         this.handleAdd = this.handleAdd.bind(this);
@@ -25,11 +25,8 @@ class Form extends React.Component {
         ピリオドは、そのまま入れると、改行文字以外のどの 1 文字にもマッチする、「特殊文字」だと認識されてしまうため。エスケープする必要がある。
         */
 
-        let regResult;
+        let regResult = this.state.content;
 
-        regResult = this.state.content;
-        /*let reg = new RegExp(/。|\./, 'gim');
-        let regResult = this.state.content.replace(reg, '！');*/
 
         let meireiList = [
             'ろよ',
@@ -49,15 +46,6 @@ class Form extends React.Component {
             'て欲しいです！'
         ]
 
-        for (let meirei of meireiList) {
-            let regs = new RegExp(`${meirei}`, 'gim');
-            let reg2 = this.state.content.match(regs);
-
-            if (reg2 !== null) {
-                regResult = this.state.content.replace(reg2, onegai[Math.floor(Math.random()*onegai.length)]);
-            }
-        }
-
         let ngList = [
             'しね',
             '死ね',
@@ -69,16 +57,25 @@ class Form extends React.Component {
         ]
 
         for (const element of ngList) {
-            let regs2 = new RegExp(`${element}`, 'gim');
-            let reg3 = this.state.content.match(regs2);
+            let regs1 = new RegExp(`${element}`, 'gim');
+            let reg2 = regResult.match(regs1);
 
-            if (reg3 !== null) {
-                regResult = this.state.content.replace(reg3, '×××');
+            if (reg2 !== null) {
+                regResult = regResult.replace(reg2, '×××');
             }
         }
 
-        let reg = new RegExp(/。|\./, 'gim');
-        let result = regResult.replace(reg, '!');
+        for (let meirei of meireiList) {
+            let regs2 = new RegExp(`${meirei}`, 'gim');
+            let reg3 = regResult.match(regs2);
+
+            if (reg3 !== null) {
+                regResult = regResult.replace(reg3, onegai[Math.floor(Math.random()*onegai.length)]);
+            }
+        }
+
+        let kuten = new RegExp(/。|\./, 'gim');
+        let result = regResult.replace(kuten, '!');
 
         this.setState({
             lists: [...this.state.lists, result],
