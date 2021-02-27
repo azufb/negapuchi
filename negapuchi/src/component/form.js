@@ -79,7 +79,7 @@ class Form extends React.Component {
             }
         }
 
-        let regExpKuten = new RegExp(/。|\./, 'gim');
+        let regExpKuten = new RegExp(/。|\.|$/, 'gim');
         regExpCont = regExpCont.replace(regExpKuten, '!');
         let result = `いつもありがとう(^ ^)v\n${regExpCont}`;
 
