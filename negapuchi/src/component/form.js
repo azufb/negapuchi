@@ -8,17 +8,17 @@ class Form extends React.Component {
             content: '',
             lists: []
         }
-        this.handleAdd = this.handleAdd.bind(this);
+        this.handleReplace = this.handleReplace.bind(this);
     }
 
     handleChange(event) {
         let inputContent = event.target.value;
         this.setState({
             content: inputContent
-        })
+        });
     }
 
-    handleAdd() {
+    handleReplace() {
         // 入力された値を、正規表現を使って変換。
         /* 
         「又は」を表すのは、「|」。
@@ -35,7 +35,8 @@ class Form extends React.Component {
             'やれよ',
             'やれや',
             'やらんかい',
-            'しいや'
+            'しいや',
+            'てくれよ'
         ]
 
         let onegaiList = [
@@ -43,7 +44,9 @@ class Form extends React.Component {
             'て頂ければ助かります！',
             'て欲しいです！',
             'てもらえたらありがたい！',
-            'て欲しいです！'
+            'てもらえたら嬉しいな！',
+            'てもらえたら嬉しいなー！',
+            'て欲しいな！'
         ]
 
         let ngList = [
@@ -54,9 +57,11 @@ class Form extends React.Component {
             'なぐる',
             'なぐん',
             '殴る',
+            '殺意',
+            '消えろ'
         ]
 
-        for (const ngWord of ngList) {
+        for (let ngWord of ngList) {
             let regExp1 = new RegExp(`${ngWord}`, 'gim');
             let regExpNg = regExpCont.match(regExp1);
 
@@ -75,7 +80,8 @@ class Form extends React.Component {
         }
 
         let regExpKuten = new RegExp(/。|\./, 'gim');
-        let result = regExpCont.replace(regExpKuten, '!');
+        regExpCont = regExpCont.replace(regExpKuten, '!');
+        let result = `いつもありがとう(^ ^)v\n${regExpCont}`;
 
         this.setState({
             lists: [...this.state.lists, result],// スプレッド構文
@@ -89,7 +95,7 @@ class Form extends React.Component {
             <div>
                 <textarea type='text' onChange={(event) => {this.handleChange(event)}} 
                 value={this.state.content} />
-                <input type='button' value='変換' onClick={() => {this.handleAdd()}} />
+                <input type='button' value='変換' onClick={() => {this.handleReplace()}} />
 
                 <div>
                 {this.state.lists.map((list, i) => <p key={i}>{list}</p>)}
