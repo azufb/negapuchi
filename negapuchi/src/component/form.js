@@ -88,7 +88,7 @@ class Form extends React.Component {
         return (
             <div>
                 <textarea type='text' onChange={(event) => {this.handleChange(event)}} 
-                value={ this.state.content } />
+                value={this.state.content} />
                 <input type='button' value='変換' onClick={() => {this.handleAdd()}} />
 
                 <div>
