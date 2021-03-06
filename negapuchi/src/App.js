@@ -5,7 +5,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>ネガプチッ！</h1>
+        <h1>ネガプチッ<span className="title">！</span></h1>
         <Form />
       </div>
     )
