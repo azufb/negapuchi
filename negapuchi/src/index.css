@@ -9,11 +9,19 @@ body {
   background-image: url(./puchipuchi.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.contents {
+  padding-left: 220px;
+  padding-right: 220px;
 }
 
 h1 {
@@ -22,26 +30,101 @@ h1 {
   font-family: 'Yusei Magic', sans-serif;
 }
 
-.title {
-  font-family: 'Shippori Mincho B1', serif;
+.introTxt {
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 1.3rem;
+}
+
+.introKoukaon {
+  font-size: 2.0rem;
+}
+
+.koukaonTxt {
+  font-family: 'Yusei Magic', sans-serif;
+  font-weight: bold;
 }
 
 .form {
+  margin-top: 45px;
   text-align: center;
-}
-
-.forms {
-  display: block;
+  width: 100%;
 }
 
 .textarea {
-  font-size: 20px;
+  font-size: 1.6rem;
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
 }
 
 .btn {
-  font-size: 18px;
+  font-size: 1.8rem;
+  font-family: 'Yusei Magic', sans-serif;
+  font-weight: bold;
+  text-align: center;
 }
 
-.exchangedTxt {
-  font-size: 20px;
+.btnRight {
+  margin-left: 10px;
+}
+
+.resultTxt {
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 1.6rem;
+}
+
+footer {
+  margin-top: auto;
+}
+
+@media (max-width: 1024px) {
+  body {
+    padding: 0 15px;
+  }
+
+  .contents {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Yusei Magic', sans-serif;
+  }
+
+  .introTxt {
+    font-size: 0.9rem;
+  }
+
+  .introKoukaon {
+    font-size: 1.2rem;
+  } 
+
+  .form {
+    margin-top: 26px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+  }
+
+  .btns {
+    padding-bottom: 20px;
+  }
+
+  .resultTxt {
+    height: 100%;
+    font-size: 1.3rem;
+    padding-bottom: 26px;
+  }
 }
