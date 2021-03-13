@@ -4,7 +4,7 @@ import Form from './component/form';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="contents">
         <h1>ネガプチッ！</h1>
         <div className="introTxt">
           <p>
@@ -15,7 +15,7 @@ class App extends React.Component {
             そんなときは、ここで、メッセージの一部を変換して、メッセージを受け止めやすくしてみませんか？
           </p>
           <p>
-            まずは、変換したい文章を入力し、「<span className="koukaonTxt">プチッ！</span>」としてみて下さい！
+            まずは、変換したい文章を入力し、「<span className="koukaonTxt introKoukaon">プチッ！</span>」としてみて下さい！
           </p>
         </div>
         <Form />
