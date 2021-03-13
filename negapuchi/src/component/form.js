@@ -9,6 +9,7 @@ class Form extends React.Component {
             lists: []
         }
         this.handleReplace = this.handleReplace.bind(this);
+        this.handleRetry = this.handleRetry.bind(this);
     }
 
     handleChange(event) {
@@ -42,13 +43,13 @@ class Form extends React.Component {
         ]
 
         let onegaiList = [
-            'て頂ければ嬉しいです！',
-            'て頂ければ助かります！',
-            'て欲しいです！',
-            'てもらえたらありがたい！',
-            'てもらえたら嬉しいな！',
-            'てもらえたら嬉しいなー！',
-            'て欲しいな！'
+            'て頂ければ嬉しいです\u{1f97a}',
+            'て頂ければ助かります\u{1f647}',
+            'て欲しいです\u{1f64f}',
+            'てもらえたらありがたい\u{1f609}',
+            'てもらえたら嬉しいな\u{1f60a}',
+            'てもらえたら嬉しいなー\u{1f61a}',
+            'て欲しいな\u{1f3b6}'
         ]
 
         let ngList = [
@@ -68,7 +69,7 @@ class Form extends React.Component {
             let regExpNg = regExpCont.match(regExp1);
 
             if (regExpNg !== null) {
-                regExpCont = regExpCont.replace(regExpNg, "×××");
+                regExpCont = regExpCont.replace(regExpNg, "\u{1f4a3}\u{1f4a3}\u{1f4a3}");
             }
         }
 
@@ -77,36 +78,52 @@ class Form extends React.Component {
             let regExpMeirei = regExpCont.match(regExp2);
 
             if (regExpMeirei !== null) {
-                regExpCont = regExpCont.replace(regExpMeirei, `${onegaiList[Math.floor(Math.random()*onegaiList.length)]}\nすみませんがお願い致します。`);
+                regExpCont = regExpCont.replace(regExpMeirei, `${onegaiList[Math.floor(Math.random()*onegaiList.length)]}すみませんがお願い致します\u{1f64f}`);
             }
         }
 
         let regExpKuten = new RegExp(/。|\.|$/, "gim");
-        regExpCont = regExpCont.replace(regExpKuten, "!");
-        let result = `いつもありがとう(^ ^)v\n${regExpCont}`;
+        regExpCont = regExpCont.replace(regExpKuten, "\u{2757}");
+        let result = `いつもありがとう\u{1f606}\u{2757} ${regExpCont}`;
 
         this.setState({
             lists: [...this.state.lists, result],// スプレッド構文
             content: ''
         });
-        
+    }
+
+    handleRetry(id) {
+        this.state.lists.splice(id);
+        this.setState({
+            lists: this.state.lists
+        });
     }
 
     render() {
+        let listsNode = this.state.lists.map((list, id) => {
+            return (
+                <li key={id}>
+                    {list}
+                </li> 
+            )
+        });
         return (
-            <div className="form">
-                <div>
-                    <textarea className="textarea" type="text" onChange={(event) => {this.handleChange(event)}} 
-                    value={this.state.content} />
+            <div className="area">
+                <div className="form">
+                    <div>
+                        <textarea className="textarea" type="text" onChange={(event) => {this.handleChange(event)}} 
+                        value={this.state.content} 
+                        placeholder="ここに入力して下さい。"/>
+                    </div>
+                    <div className="btns">
+                        <button className="btn" type="button" onClick={() => {this.handleReplace()}}>プチッ！</button>
+                        <button className="btn btnRight" type="button" onClick={(id) => {this.handleRetry(id)}}>もう一度！</button>
+                    </div>
                 </div>
 
-                <button className="btn" type="button" onClick={() => {this.handleReplace()}}>プチッ！</button>
-
-                <div>
-                    <p className="exchangedTxt">
-                        {this.state.lists.map((list, i) => <p key={i}>{list}</p>)}
-                    </p>
-                </div>
+                <ul className="resultTxt">
+                    {listsNode}
+                </ul>
             </div>
         )
     }
