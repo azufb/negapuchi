@@ -5,9 +5,43 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0 50px;
+  background-image: url(./puchipuchi.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  text-align: center;
+  font-size: 50pt;
+  font-family: 'Yusei Magic', sans-serif;
+}
+
+.title {
+  font-family: 'Shippori Mincho B1', serif;
+}
+
+.form {
+  text-align: center;
+}
+
+.forms {
+  display: block;
+}
+
+.textarea {
+  font-size: 20px;
+}
+
+.btn {
+  font-size: 18px;
+}
+
+.exchangedTxt {
+  font-size: 20px;
 }

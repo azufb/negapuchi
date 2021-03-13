@@ -5,7 +5,7 @@ class Form extends React.Component {
         // 初期化
         super(props);
         this.state = {
-            content: '',
+            content: "",
             lists: []
         }
         this.handleReplace = this.handleReplace.bind(this);
@@ -24,6 +24,8 @@ class Form extends React.Component {
         「又は」を表すのは、「|」。
         ピリオドは、そのまま入れると、改行文字以外のどの 1 文字にもマッチする、「特殊文字」だと認識されてしまうため。エスケープする必要がある。
         */
+
+        window.alert("プチッ！");
 
         let regExpCont = this.state.content;
 
@@ -62,16 +64,16 @@ class Form extends React.Component {
         ]
 
         for (let ngWord of ngList) {
-            let regExp1 = new RegExp(`${ngWord}`, 'gim');
+            let regExp1 = new RegExp(`${ngWord}`, "gim");
             let regExpNg = regExpCont.match(regExp1);
 
             if (regExpNg !== null) {
-                regExpCont = regExpCont.replace(regExpNg, '×××');
+                regExpCont = regExpCont.replace(regExpNg, "×××");
             }
         }
 
         for (let meirei of meireiList) {
-            let regExp2 = new RegExp(`${meirei}`, 'gim');
+            let regExp2 = new RegExp(`${meirei}`, "gim");
             let regExpMeirei = regExpCont.match(regExp2);
 
             if (regExpMeirei !== null) {
@@ -79,8 +81,8 @@ class Form extends React.Component {
             }
         }
 
-        let regExpKuten = new RegExp(/。|\.|$/, 'gim');
-        regExpCont = regExpCont.replace(regExpKuten, '!');
+        let regExpKuten = new RegExp(/。|\.|$/, "gim");
+        regExpCont = regExpCont.replace(regExpKuten, "!");
         let result = `いつもありがとう(^ ^)v\n${regExpCont}`;
 
         this.setState({
@@ -92,13 +94,18 @@ class Form extends React.Component {
 
     render() {
         return (
-            <div>
-                <textarea type='text' onChange={(event) => {this.handleChange(event)}} 
-                value={this.state.content} />
-                <input type='button' value='変換' onClick={() => {this.handleReplace()}} />
+            <div className="form">
+                <div>
+                    <textarea className="textarea" type="text" onChange={(event) => {this.handleChange(event)}} 
+                    value={this.state.content} />
+                </div>
+
+                <button className="btn" type="button" onClick={() => {this.handleReplace()}}>プチッ！</button>
 
                 <div>
-                {this.state.lists.map((list, i) => <p key={i}>{list}</p>)}
+                    <p className="exchangedTxt">
+                        {this.state.lists.map((list, i) => <p key={i}>{list}</p>)}
+                    </p>
                 </div>
             </div>
         )
