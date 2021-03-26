@@ -1,0 +1,200 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*padding: 0 50px;*/
+  background-image: url(./puchipuchi.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/*.contents {
+  padding-left: 220px;
+  padding-right: 220px;
+}*/
+
+h1 {
+  text-align: center;
+  font-size: 50pt;
+  font-family: 'Yusei Magic', sans-serif;
+  background-color: #ffff;
+  margin-top: 0px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.introTxt {
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 1.3rem;
+}
+
+.introKoukaon {
+  font-size: 2.0rem;
+}
+
+.koukaonTxt {
+  font-family: 'Yusei Magic', sans-serif;
+  font-weight: bold;
+}
+
+.area {
+  margin: 0 auto;
+}
+
+.form {
+  margin-top: 45px;
+  text-align: center;
+}
+
+.textarea {
+  font-size: 1.6rem;
+  width: 951px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  font-size: 1.8rem;
+  font-family: 'Yusei Magic', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btnRight {
+  margin-left: 10px;
+}
+
+.resultTxt {
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 1.6rem;
+}
+
+footer {
+  margin-top: auto;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: #ffff;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .contents {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Yusei Magic', sans-serif;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .introTxt {
+    font-size: 0.9rem;
+  }
+
+  .introKoukaon {
+    font-size: 1.2rem;
+  } 
+
+  .form {
+    margin-top: 26px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .textarea {
+    width: 100%;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+  }
+
+  .btns {
+    padding-bottom: 20px;
+  }
+
+  .resultTxt {
+    height: 100%;
+    font-size: 1.3rem;
+    padding-bottom: 26px;
+  }
+
+  footer {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .contents {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Yusei Magic', sans-serif;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .introTxt {
+    font-size: 0.9rem;
+  }
+
+  .introKoukaon {
+    font-size: 1.2rem;
+  } 
+
+  .form {
+    margin-top: 26px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .textarea {
+    width: 658px;
+  }
+
+  .btn {
+    font-size: 1.5rem;
+  }
+
+  .btns {
+    padding-bottom: 20px;
+  }
+
+  .resultTxt {
+    height: 100%;
+    font-size: 1.3rem;
+    padding-bottom: 26px;
+  }
+
+  footer {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
