@@ -45,7 +45,7 @@ class Form extends React.Component {
         let onegaiList = [
             'て頂ければ嬉しいです\u{1f97a}',
             'て頂ければ助かります\u{1f647}',
-            'て欲しいです\u{1f64f}',
+            'て欲しいです\u{1f64f}よろしくお願いします！',
             'てもらえたらありがたい\u{1f609}',
             'てもらえたら嬉しいな\u{1f60a}',
             'てもらえたら嬉しいなー\u{1f61a}',
@@ -78,7 +78,7 @@ class Form extends React.Component {
             let regExpMeirei = regExpCont.match(regExp2);
 
             if (regExpMeirei !== null) {
-                regExpCont = regExpCont.replace(regExpMeirei, `${onegaiList[Math.floor(Math.random()*onegaiList.length)]}すみませんがお願い致します\u{1f64f}`);
+                regExpCont = regExpCont.replace(regExpMeirei, `${onegaiList[Math.floor(Math.random()*onegaiList.length)]}`);
             }
         }
 
