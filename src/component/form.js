@@ -83,7 +83,7 @@ class Form extends React.Component {
         }
 
         let regExpKuten = new RegExp(/。|\.|$/, "gim");
-        regExpCont = regExpCont.replace(regExpKuten, "\u{2757}");
+        regExpCont = regExpCont.replace(regExpKuten, "！");
         let result = `いつもありがとう\u{1f606}${regExpCont}`;//\u{2757} 
 
         this.setState({
