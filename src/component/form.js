@@ -84,10 +84,10 @@ class Form extends React.Component {
 
         let regExpKuten = new RegExp(/。|\.|$/, "gim");
         regExpCont = regExpCont.replace(regExpKuten, "！");
-        let result = `いつもありがとう\u{1f606}${regExpCont}`;//\u{2757} 
+        let result = `いつもありがとう\u{1f606}${regExpCont}`;
 
         this.setState({
-            lists: [...this.state.lists, result],// スプレッド構文
+            lists: [...this.state.lists, result],
             content: ''
         });
     }
@@ -130,9 +130,3 @@ class Form extends React.Component {
 }
 
 export default Form;
-
-/* extendsを用いて、Reactが用意しているAPIの、React.Componentを継承し、
-親子関係を持つclassを作成。
-継承した親classのプロパティを初期化するためには、constructorには、
-親classを表す、super()の引数として、初期化したい値(大抵は、props)を渡す。
-*/
