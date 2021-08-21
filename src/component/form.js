@@ -56,11 +56,19 @@ class Form extends React.Component {
             '死ね',
             'ころす',
             '殺す',
+            'ぶっ殺す',
             'なぐる',
             'なぐん',
             '殴る',
             '殺意',
-            '消えろ'
+            '消えろ',
+            'くそ',
+            'クソ',
+            'ぼけ',
+            'ボケ',
+            'かす',
+            'カス',
+            'ggrks'
         ]
 
         for (let ngWord of ngList) {
